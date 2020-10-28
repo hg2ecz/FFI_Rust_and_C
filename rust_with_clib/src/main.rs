@@ -1,5 +1,6 @@
 #[link(name = "vecpow", kind = "static")]
 extern "C" {
+    // int vecpow_c(float *dout, int dout_maxlen, const float *din, int din_len)
     fn vecpow_c(dout: *mut f32, dout_maxlen: i32, din: *const f32, din_len: i32) -> i32;
 }
 
