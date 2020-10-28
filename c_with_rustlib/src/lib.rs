@@ -13,21 +13,16 @@ pub extern "C" fn vecpow_rs_ffi(
     din: &mut f32,
     din_len: i32,
 ) -> i32 {
-    let mut tmp_in = Vec::with_capacity(din_len as usize);
-    unsafe {
-        std::ptr::copy(din, tmp_in.as_mut_ptr(), din_len as usize);
-        tmp_in.set_len(din_len as usize);
-    }
+    let tmp_in = unsafe { std::slice::from_raw_parts(din, din_len as usize).to_vec() };
 
     let tmp_out = vecpow_rs(&tmp_in);
 
-    if dout_maxlen >= tmp_out.len() as i32 {
-        unsafe {
-            std::ptr::copy(tmp_out.as_ptr(), dout, tmp_out.len());
-        }
-        tmp_out.len() as i32
-    } else {
+    if dout_maxlen < tmp_out.len() as i32 {
         panic!("vecpow: len >= out_maxlen");
-        //0
     }
+
+    unsafe {
+        std::ptr::copy(tmp_out.as_ptr(), dout, tmp_out.len());
+    }
+    tmp_out.len() as i32
 }
