@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -O2 -Wall
-LDFLAGS = -lpthread -ldl -s
+LDFLAGS = -lpthread -ldl -s -Wl,--gc-sections
 ARCH = target/release/libc_with_rustlib.a
 
 OBJS = src/main.o
