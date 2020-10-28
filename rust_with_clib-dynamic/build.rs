@@ -1,3 +1,3 @@
 fn main() {
-    println!("cargo:rustc-flags=-L ./");
+    println!("cargo:rustc-flags=-Lc_src/");
 }

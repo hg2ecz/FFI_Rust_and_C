@@ -3,8 +3,8 @@ CFLAGS = -O2 -Wall
 LDFLAGS = -lpthread -ldl -s -Wl,--gc-sections
 ARCH = target/release/libc_with_rustlib.a
 
-OBJS = src/main.o
-TARGET = c_with_rustlib
+OBJS = c_src/main.o
+TARGET = c_src/c_with_rustlib
 
 all: $(OBJS)
 	cargo build --release
@@ -15,4 +15,4 @@ clean:
 	cargo clean
 
 test:
-	./c_with_rustlib
+	c_src/c_with_rustlib

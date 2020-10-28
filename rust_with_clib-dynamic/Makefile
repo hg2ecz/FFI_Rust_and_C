@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Ofast -march=native -funroll-all-loops -fpic
-LDFLAGS = -shared
+LDFLAGS = -shared -s
 
 OBJS = c_src/vecpow.o
-TARGET = libvecpow_dyn.so
+TARGET = c_src/libvecpow_dyn.so
 
 all: $(OBJS)
 	$(CC) $(OBJS) $(LDFLAGS) -o $(TARGET)
@@ -14,4 +14,4 @@ clean:
 	cargo clean
 
 test:
-	LD_LIBRARY_PATH=./ ./target/release/rust_with_clib-dynamic
+	LD_LIBRARY_PATH=./c_src/ ./target/release/rust_with_clib-dynamic

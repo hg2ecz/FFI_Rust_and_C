@@ -1,6 +1,6 @@
 fn main() {
     cc::Build::new()
-        .file("src/vecpow.c")
+        .file("c_src/vecpow.c")
         .flag("-Ofast")
         .flag("-march=native")
         .flag("-funroll-all-loops")
