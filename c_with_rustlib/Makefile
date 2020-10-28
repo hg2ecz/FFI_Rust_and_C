@@ -13,3 +13,6 @@ all: $(OBJS)
 clean:
 	rm -f $(OBJS) $(TARGET)
 	cargo clean
+
+test:
+	./c_with_rustlib
